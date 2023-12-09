@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기기 OS 감지 페이지</title>
+    <script>
+        // 사용자의 기기 OS를 감지하고 리다이렉트 함수 호출
+        function detectOSAndRedirect() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // 만약 userAgent에 'Android'라는 문자열이 포함되어 있으면 안드로이드로 간주
+            if (/android/i.test(userAgent)) {
+                window.location.href = 'https://play.google.com/store/apps/details?id=com.entereal.emotionteenieping';
+            }
+            // 만약 userAgent에 'iPhone' 또는 'iPad'라는 문자열이 포함되어 있으면 아이폰 또는 아이패드로 간주
+            else if (/iPad|iPhone|iPod/i.test(userAgent)) {
+                window.location.href = 'https://apps.apple.com/kr/app/id6450882377';
+            }
+            // 기타 경우에는 기본 페이지로 유지
+            else {
+                window.location.href = 'https://m.site.naver.com/1dYB8';
+            }
+        }
+    </script>
+</head>
+<body onload="detectOSAndRedirect()">
+    <p>기기 OS를 감지 중입니다...</p>
+</body>
+</html>
