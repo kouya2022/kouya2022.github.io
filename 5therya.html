@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이랴 타이머</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .countdown {
+            font-size: 2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="countdown" id="countdown"></div>
+
+<script>
+    // 타겟 시간 설정 (예: 2024년 12월 31일 23:59:59)
+    const targetDate = new Date("2024-09-04T00:00:00").getTime();
+
+    // 타이머 업데이트 함수
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const timeLeft = targetDate - now;
+
+        // 시간 계산
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        // 화면에 표시
+        document.getElementById("countdown").innerHTML = "큰거 오는 날 "+
+            days + "일 " + hours + "시간 " + minutes + "분 " + seconds + "초";
+
+        // 타이머가 끝나면
+        if (timeLeft < 0) {
+            clearInterval(countdownTimer);
+            document.getElementById("countdown").innerHTML = "이랴 5주년!!";
+        }
+    }
+
+    // 1초마다 업데이트
+    const countdownTimer = setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
